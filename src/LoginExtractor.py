@@ -1,5 +1,5 @@
 import requests
-from src import config
+import config
 import sqlite3
 
 
@@ -49,4 +49,4 @@ class LoginExtractor:
         dbh.close()
 
 
-a = LoginExtractor()
+LoginExtractor()
