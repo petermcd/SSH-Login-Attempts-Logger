@@ -1,6 +1,7 @@
 import requests
 import config
 import sqlite3
+import json
 
 
 class LoginExtractor:
@@ -18,11 +19,11 @@ class LoginExtractor:
                     "TableName": "ssh-login-attempts",
                     "Item": {{
                         "id": {},
-                        "username": "{}",
-                        "password": "{}",
+                        "username": {},
+                        "password": {},
                         "host": "{}",
                         "when": "{}"
-                    }}}}'''.format(identifier, username, password, host, when)
+                    }}}}'''.format(identifier, json.dumps(username), json.dumps(password), host, when)
         request = requests.post(config.URL,
                                 data=data,
                                 headers={"x-api-key": config.API_Key}
